@@ -35,6 +35,7 @@ values."
      spell-checking
      syntax-checking
      version-control
+     ocaml
      scala
      latex
      lech
