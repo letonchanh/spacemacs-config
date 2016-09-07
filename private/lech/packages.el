@@ -40,7 +40,8 @@
     pdf-tools
     ;; latex-preview-pane
     ;; Package for z3
-    boogie-friends)
+    boogie-friends
+    (songbird :location local))
 
   "The list of Lisp packages required by the lech layer.
 
@@ -108,5 +109,18 @@ Each entry is either:
 (defun lech/init-boogie-friends ()
   (require 'boogie-friends)
   (setq flycheck-z3-smt2-executable "/usr/local/bin/z3"))
+
+;;; LOCAL PACKAGES
+
+(defun lech/init-songbird ()
+  (require 'songbird)
+  (add-to-list 'auto-mode-alist '("\\.sb\\'" . songbird))
+  (add-to-list 'auto-mode-alist '("\\.ss\\'" . songbird))
+  (add-to-list 'auto-mode-alist '("\\.slk\\'" . songbird))
+  (defun my-songbird-hook ()
+    ;; customize syntax table for slurping/barfing parentheses
+    (dolist (symbol (list ?. ?, ?\; ?: ?+ ?- ?@ ?! ?> ?<))
+      (modify-syntax-entry symbol "'" songbird-syntax-table)))
+  (add-hook 'songbird-hook 'my-songbird-hook 'append))
 
 ;;; packages.el ends here

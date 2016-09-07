@@ -12,9 +12,6 @@
   ;; (setq flycheck-z3-smt2-executable "/usr/local/bin/z3")
   ;; (setq flycheck-inferior-dafny-executable "PATH-TO-DafnyServer.exe") ;; Optional
   ;; (setq boogie-friends-profile-analyzer-executable "PATH-TO-Z3-AXIOM-PROFILER") ;; Optional
-
-  ;; c-mode for ss files
-  (add-to-list 'auto-mode-alist '("\\.ss\\'" . c-mode))
 )
 
 (defun lech/init-keys ()
