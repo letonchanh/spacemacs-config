@@ -38,7 +38,7 @@
     auctex
     ; latex-extra
     pdf-tools
-    latex-preview-pane
+    ;; latex-preview-pane
     ;; Package for z3
     boogie-friends)
 
@@ -77,10 +77,16 @@ Each entry is either:
 
 (defun lech/init-pdf-tools ()
   (require 'pdf-tools)
-  (pdf-tools-install))
+  (pdf-tools-install)
+  (custom-set-variables
+   '(pdf-view-midnight-colors (quote ("#D3D3D3" . "#292B2E"))))
+  (defun my-pdf-view-hook ()
+    (if (not (bound-and-true-p pdf-view-midnight-minor-mode))
+        (pdf-view-midnight-minor-mode)))
+  (add-hook 'pdf-view-mode-hook 'my-pdf-view-hook))
 
-(defun lech/init-latex-preview-pane ()
-  (require 'latex-preview-pane))
+;; (defun lech/init-latex-preview-pane ()
+;;   (require 'latex-preview-pane))
 
 (defun lech/post-init-auctex ()
   (require 'tex)

@@ -1,0 +1,3 @@
+[submodule "tddsg"]
+	path = tddsg
+	url = https://github.com/tddsg/spacemacs-config.git
