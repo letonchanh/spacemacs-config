@@ -1,6 +1,7 @@
 (defun lech/init-configs ()
   ;; general
   (setq global-linum-mode t)
+  (setq company-idle-delay 300)
 
   ;; shell
   (setq comint-prompt-read-only nil)

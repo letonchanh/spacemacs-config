@@ -110,6 +110,13 @@ Each entry is either:
   (require 'boogie-friends)
   (setq flycheck-z3-smt2-executable "/usr/local/bin/z3"))
 
+(defun tddsg/post-init-tuareg ()
+  (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+  (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+
+  (require 'ocp-indent)
+  (require 'merlin))
+
 ;;; LOCAL PACKAGES
 
 (defun lech/init-songbird ()
