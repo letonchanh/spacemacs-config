@@ -115,7 +115,12 @@ Each entry is either:
   (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 
   (require 'ocp-indent)
-  (require 'merlin))
+  (require 'merlin)
+  (defun my-tuareg-hook ()
+    (interactive)
+    (enable-ocp-indent)
+    (setq indent-line-function 'ocp-indent-line))
+  (add-hook 'tuareg-mode-hook 'my-tuareg-hook 'append))
 
 ;;; LOCAL PACKAGES
 
